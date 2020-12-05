@@ -18,6 +18,38 @@
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+    <script class="d-print-none">
+        function exportTableToExcel(tableID, filename = '') {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+        }
+    </script>
     <title>KoKeRu</title>
 </head>
 
