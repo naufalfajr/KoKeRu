@@ -26,16 +26,23 @@ if (isset($_POST['submit'])) {
     if ($valid) {
         //asign query
         $query = " SELECT * FROM cs WHERE email='" . $email . "' AND password='" . md5($password) . "' ";
+        $query_manager = " SELECT * FROM manager WHERE email='" . $email . "' AND password='" . md5($password) . "' ";
         //execute query
         $result = $db->query($query);
-        if (!$result) {
+        $result_manager = $db->query($query_manager);
+        if (!$result || !$result_manager) {
             die('could not querry the databases: <br>' . $db->error);
         } else {
 
             if ($result->num_rows > 0) {   //login berhasil
                 $row = $result->fetch_object();
                 $_SESSION['nama'] = $row->nama_cs;
-                header('location: index.php');
+                header('location: ./');
+                exit;
+            } elseif ($result_manager->num_rows > 0) {
+                $row = $result_manager->fetch_object();
+                $_SESSION['nama'] = $row->nama_manager;
+                header('location: manager/');
                 exit;
             } else {   //login gagal
                 $error_email = 'Combination of email and password are not correct';
