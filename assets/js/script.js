@@ -6,11 +6,13 @@
  * registerDialog baru dengan masukan id emelen.
  * Masih belum sempurna untuk layar kecil.
  */
-var dialog = document.querySelector("dialog");
-if (!dialog.showModal) {
-  dialogPolyfill.registerDialog(dialog);
-  dialogPolyfill.registerDialog(lightBox);
-  dialogPolyfill.registerDialog(dialog_kosong);
+if (document.querySelector("dialog")) {
+  var dialog = document.querySelector("dialog");
+  if (!dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+    dialogPolyfill.registerDialog(lightBox);
+    dialogPolyfill.registerDialog(dialog_kosong);
+  }
 }
 
 /*
@@ -48,4 +50,14 @@ function fireModalKosongDemo() {
     dialog.close();
   });
 }
-// endOf grup fungsi dialog
+// endOf grup fungsi
+
+/*
+ * Menghapus kelas is-invalid dari div mdl-textfield
+ */
+$("#email").on("focusin", function () {
+  $("#formEmail").removeClass("is-invalid");
+});
+$("#password").on("select", function () {
+  $("#formPassword").removeClass("is-invalid");
+});
