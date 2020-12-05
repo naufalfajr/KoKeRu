@@ -45,6 +45,14 @@
   height: 200px;
 }
 
+.pls-center {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 10%;
+}
+
 /* 
 * HTML BIASA
 */
