@@ -9,8 +9,10 @@ Muncul ketika tombol menu di click -->
 
 <!------------------------------------------------------------ ISI ------------------------------------------------------------>
 <?php
-
+$tanggal = date('Y-m-d');
+$tglSekarang = date('Y-m-d');
 ?>
+
 <main class="mdl-layout__content">
     <!-- content here -->
     <div class="page-content">
@@ -26,8 +28,7 @@ Muncul ketika tombol menu di click -->
                             <input type="date" name="tanggal" id="tanggal" class="mdl-textfield__input" value="<?php if (isset($tanggal)) {
                                                                                                                     echo $tanggal;
                                                                                                                 } else {
-                                                                                                                    $tanggal = date('Y-m-d');
-                                                                                                                    echo $tanggal;
+                                                                                                                    echo $tglSekarang;
                                                                                                                 } ?>">
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label margin-bottom">
@@ -48,8 +49,8 @@ Muncul ketika tombol menu di click -->
                             Export
                         </button>
                         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
-                            <button class="mdl-menu__item mdl-menu__item--full mdl-cell mdl-cell--12-col" onclick="window.print()">PDF</button>
-                            <button class="mdl-menu__item mdl-menu__item--full mdl-cell mdl-cell--12-col">Excel</button>
+                            <button onclick="window.print()" class="mdl-menu__item mdl-menu__item--full mdl-cell mdl-cell--12-col">PDF</button>
+                            <button onclick="exportTableToExcel('tableData','Laporan Harian <?php echo $tanggal; ?>')" class="mdl-menu__item mdl-menu__item--full mdl-cell mdl-cell--12-col">Excel</button>
                         </ul>
                     </div>
                 </div>
@@ -58,9 +59,9 @@ Muncul ketika tombol menu di click -->
                     <div class="card-body">
                         <div id="laporanHarian">
                             <h2>Laporan Harian Pembersihan Ruangan</h2>
-                            <h3>Tanggal <?= date("d-m-Y", strtotime($tanggal)); ?> </h3>
+                            <h3>Tanggal <?= date("d/m/Y", strtotime($_POST['tanggal'])); ?> </h3>
                             <br>
-                            <table class="table table-striped table-bordered dataTable" name="tableData" id="tableData">
+                            <table class="table table-striped table-bordered dataTable" style="border: 1;" name="tableData" id="tableData">
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Ruang</th>
@@ -73,7 +74,6 @@ Muncul ketika tombol menu di click -->
                                 require_once('../functions/db_login.php');
                                 $tanggal = $_POST['tanggal'];
                                 $status = $_POST['pilihanStatus'];
-                                $query = "SELECT * FROM trx WHERE tanggal = '$tanggal'";
                                 if (isset($_POST['tanggal']) && isset($_POST['pilihanStatus'])) {
                                     if ($status == "semua") {
                                         $query = "SELECT * FROM trx WHERE tanggal = '$tanggal'";
@@ -82,12 +82,14 @@ Muncul ketika tombol menu di click -->
                                     } elseif ($status == "belum") {
                                         $query = "SELECT * FROM trx WHERE tanggal = '$tanggal' AND status = 0";
                                     }
+                                } else {
+                                    $query = "SELECT * FROM trx WHERE tanggal = '$tanggal'";
                                 }
-                                $i = 1;
                                 $result = $db->query($query);
                                 if (!$result) {
                                     die("Could not query the database: <br/>" . $db->error . "<br>Query: " . $query);
                                 }
+                                $i = 1;
                                 while ($row = $result->fetch_object()) {
                                     echo '<tr>';
                                     echo '<td>' . $i++ . '</td>';
