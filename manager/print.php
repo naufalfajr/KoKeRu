@@ -9,7 +9,8 @@ Muncul ketika tombol menu di click -->
 
 <!------------------------------------------------------------ ISI ------------------------------------------------------------>
 <?php
-$tanggal = date('Y-m-d');
+@$tanggal = $_POST['tanggal'];
+@$status = $_POST['pilihanStatus'];
 $tglSekarang = date('Y-m-d');
 ?>
 
@@ -59,7 +60,11 @@ $tglSekarang = date('Y-m-d');
                     <div class="card-body">
                         <div id="laporanHarian">
                             <h2>Laporan Harian Pembersihan Ruangan</h2>
-                            <h3>Tanggal <?= date("d/m/Y", strtotime($_POST['tanggal'])); ?> </h3>
+                            <h3>Tanggal <?php if (isset($tanggal)) {
+                                            echo date('d-m-Y', strtotime($tanggal));
+                                        } else {
+                                            echo date('d-m-Y', strtotime($tglSekarang));
+                                        }?></h3>
                             <br>
                             <table class="table table-striped table-bordered dataTable" style="border: 1;" name="tableData" id="tableData">
                                 <tr>
@@ -72,8 +77,6 @@ $tglSekarang = date('Y-m-d');
                                 <?php
                                 //Include Informasi database
                                 require_once('../functions/db_login.php');
-                                $tanggal = $_POST['tanggal'];
-                                $status = $_POST['pilihanStatus'];
                                 if (isset($_POST['tanggal']) && isset($_POST['pilihanStatus'])) {
                                     if ($status == "semua") {
                                         $query = "SELECT * FROM trx WHERE tanggal = '$tanggal'";
@@ -83,7 +86,7 @@ $tglSekarang = date('Y-m-d');
                                         $query = "SELECT * FROM trx WHERE tanggal = '$tanggal' AND status = 0";
                                     }
                                 } else {
-                                    $query = "SELECT * FROM trx WHERE tanggal = '$tanggal'";
+                                    $query = "SELECT * FROM trx WHERE tanggal = '$tglSekarang'";
                                 }
                                 $result = $db->query($query);
                                 if (!$result) {
