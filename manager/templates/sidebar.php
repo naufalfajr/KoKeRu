@@ -9,6 +9,7 @@
     <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="./">Dashboard</a>
         <a class="mdl-navigation__link" href="print.php">Print</a>
+        <a class="mdl-navigation__link" href="jobdesk.php">Jobdesk</a>
         <!-- account button di screen besar pindah ke navbar-->
         <div class="pls-margin-x pls-magin-y mdl-layout--small-screen-only">
             <button id="account-side" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">

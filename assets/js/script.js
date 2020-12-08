@@ -50,6 +50,80 @@ function fireModalKosongDemo() {
     dialog.close();
   });
 }
+
+//Script untuk menampilkan tanggal
+setInterval(Tanggal, 1000);
+
+function Tanggal() {
+  let d = new Date();
+  var hari;
+  switch (d.getDay()) {
+      case 0:
+        hari = "Minggu";
+        break;
+      case 1:
+        hari = "Senin";
+        break;
+      case 2:
+        hari = "Selasa";
+        break;
+      case 3:
+        hari = "Rabu";
+        break;
+      case 4:
+        hari = "Kamis";
+        break;
+      case 5:
+        hari = "Jumat";
+        break;
+      case 6:
+        hari = "Sabtu";
+        break;
+  }
+  var bulan;
+  switch (d.getMonth()) {
+    case 0:
+      bulan = "Januari";
+      break;
+    case 1:
+      bulan = "Februari";
+      break;
+    case 2:
+      bulan = "Maret";
+      break;
+    case 3:
+      bulan = "April";
+      break;
+    case 4:
+      bulan = "Mei";
+      break;
+    case 5:
+      bulan = "Juni";
+      break;
+    case 6:
+      bulan = "Juli";
+      break;
+    case 7:
+      bulan = "Agustus";
+      break;
+    case 8:
+      bulan = "September";
+      break;
+    case 9:
+      bulan = "Oktober";
+      break;
+    case 10:
+      bulan = "November";
+      break;
+    case 11:
+      bulan = "Desember";
+      break;
+  }
+  document.getElementById("date").innerHTML=
+  hari + ", " + d.getDate() + " " + bulan + " " + d.getFullYear() + " " +
+  d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+}
+
 // endOf grup fungsi
 
 /*
