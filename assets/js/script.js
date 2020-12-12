@@ -58,27 +58,27 @@ function Tanggal() {
   let d = new Date();
   var hari;
   switch (d.getDay()) {
-      case 0:
-        hari = "Minggu";
-        break;
-      case 1:
-        hari = "Senin";
-        break;
-      case 2:
-        hari = "Selasa";
-        break;
-      case 3:
-        hari = "Rabu";
-        break;
-      case 4:
-        hari = "Kamis";
-        break;
-      case 5:
-        hari = "Jumat";
-        break;
-      case 6:
-        hari = "Sabtu";
-        break;
+    case 0:
+      hari = "Minggu";
+      break;
+    case 1:
+      hari = "Senin";
+      break;
+    case 2:
+      hari = "Selasa";
+      break;
+    case 3:
+      hari = "Rabu";
+      break;
+    case 4:
+      hari = "Kamis";
+      break;
+    case 5:
+      hari = "Jumat";
+      break;
+    case 6:
+      hari = "Sabtu";
+      break;
   }
   var bulan;
   switch (d.getMonth()) {
@@ -119,9 +119,20 @@ function Tanggal() {
       bulan = "Desember";
       break;
   }
-  document.getElementById("date").innerHTML=
-  hari + ", " + d.getDate() + " " + bulan + " " + d.getFullYear() + " " +
-  d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+  document.getElementById("date").innerHTML =
+    hari +
+    ", " +
+    d.getDate() +
+    " " +
+    bulan +
+    " " +
+    d.getFullYear() +
+    " " +
+    d.getHours() +
+    ":" +
+    d.getMinutes() +
+    ":" +
+    d.getSeconds();
 }
 
 // endOf grup fungsi

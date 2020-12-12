@@ -1,10 +1,3 @@
-<?php
-session_start(); //insisalisasi session
-if (!isset($_SESSION['nama'])) {
-    header('Location: login.php');
-}
-$nama = $_SESSION['nama'];
-?>
 <!------------------------------------------------------------ NAVBAR ------------------------------------------------------------>
 <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
