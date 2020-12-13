@@ -24,6 +24,7 @@
                                 <th>Ruang</th>
                                 <th></th>
                                 <th>Penanggung Jawab</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
