@@ -15,6 +15,7 @@
         <section id="content-header"></section>
         <!-- bersisi card ruangan -->
         <section id="content-body">
+            <div id="edit_response"></div>
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                 <div class="mdl-cell mdl-cell--4-col">
@@ -24,6 +25,7 @@
                                 <th>Ruang</th>
                                 <th></th>
                                 <th>Penanggung Jawab</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,11 +44,27 @@
                                 echo '<tr>';
                                 echo '<td>'.$row->nama_ruang.'</td>';
                                 echo '<td>:</td>';
-                                echo '<td>'.$row->nama_cs.'</td>';
-                                echo '<td><a class="mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 13px;" href="edit_jobdesk.php?id='.$row->idruang.'">
+                                $idcs = $row->idcs;
+                        ?>
+                                <td><select name="cs" id="cs">
+                        <?php
+                                    $query_cs = " SELECT * FROM cs ORDER BY idcs ";
+                                    $result_cs = $db->query($query_cs);
+                                    if(!$result_cs){
+                                        die ("Could not query the database: <br>".$db->error);
+                                    }
+                                    //Fetch and display the results
+                                    while ($row_cs = $result_cs->fetch_object()) {
+                        ?>
+                                        <option value="<?php echo $row_cs->idcs; ?>" <?php if ($idcs == $row_cs->idcs) echo 'selected="true"'; ?>><?php echo $row_cs->nama_cs; ?></option>
+                                    <?php } ?>
+                                </select></td>
+                        <?php
+                                echo '<td><a class="mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 13px;" onclick="edit_jobdesk('.$row->idruang.')">
                                         <i class="material-icons" style="font-size: 16px;">create</i> edit</a></td>';
                                 echo '</tr>';
                             }
+                            $result_cs->free();
                             $result->free();
                             $db->close();
                         ?>
@@ -58,5 +76,4 @@
         </section>
     </div>
 </main>
-
-<?php include("../templates/footer.php") ?>
+<?php include("templates/footer.php") ?>
