@@ -135,6 +135,42 @@ function Tanggal() {
     d.getSeconds();
 }
 
+//Script Ajax Edit Jobdesk
+function getXMLHTTPRequest() {
+  if (window.XMLHttpRequest) {
+      //code for odern browsers
+      return new XMLHttpRequest();
+  }else{
+      //code for IE browser
+      return new ActiveXObject("Microsoft.XMLHTTP");
+  }
+}
+
+function edit_jobdesk(idruang) {
+  var xmlhttp = getXMLHTTPRequest();
+  //get input value
+  var ruang = encodeURI(idruang);
+  var idcs = encodeURI(document.getElementById('cs').value);
+  //validate
+  if(ruang != "" && cs != ""){
+      //set url and inner
+      var url = "edit_jobdesk.php?idruang=" + ruang + "&idcs=" + idcs;
+      //alert(url)
+      var inner = 'edit_response';
+      //open request
+      xmlhttp.open('GET', url, true);
+      xmlhttp.onreadystatechange = function() {
+          document.getElementById(inner).innerHTML = '<img src="../assets/ajax-loader.gif" />';
+          if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)) {
+              document.getElementById(inner).innerHTML = xmlhttp.responseText;
+          }
+          return false;
+      }
+      xmlhttp.send(null);
+  }else{
+      alert("Please fill all the fields");
+  }
+}
 // endOf grup fungsi
 
 /*
