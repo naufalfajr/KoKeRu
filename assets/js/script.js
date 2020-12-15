@@ -31,6 +31,23 @@ if (document.querySelector("dialog")) {
                 });
               });  
             }
+
+            function loadLightBox(bukti) {
+              $('#light-box-img').attr("src","assets/img/"+bukti);
+              $('#modal-mdl').modal('hide');
+              $('#light-box').modal('show');  
+            }
+
+            function loadLightBoxManager(bukti) {
+              $('#light-box-img').attr("src","../assets/img/"+bukti);
+              $('#modal-mdl').modal('hide');
+              $('#light-box').modal('show');  
+            }
+
+            function loadModal() {
+              $('#light-box').modal('hide');
+              $('#modal-mdl').modal('show');
+            }
             
             function fireLightBox() {
               lightBox = document.querySelector("#lightBox");

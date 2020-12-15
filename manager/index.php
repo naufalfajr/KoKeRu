@@ -16,9 +16,9 @@
             <section id="content-header">
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-                        <h1 class="mdl-cell--hide-phone">Monitoring Kebersihan dan Kerapihan Ruang</h1>
-                        <h2 class="">Gedung Bersama Maju</h2>
-                        <h3 class="mdl-cell--hide-phone" id="date"></h3>
+                        <h4 class="mdl-cell--hide-phone">Monitoring Kebersihan dan Kerapihan Ruang</h4>
+                        <h5 class="">Gedung Bersama Maju</h5>
+                        <h6 class="mdl-cell--hide-phone" id="date"></h6>
                     </div>
                 </div>
             </section>
@@ -29,7 +29,7 @@
                     //include our login information
                     require_once('../functions/db_login.php');
                     //execute query
-                    $tanggal = "2020-11-26";
+                    $tanggal = "2020-12-04";
                     $query = " SELECT * FROM trx WHERE tanggal='".$tanggal."'";
                     $result = $db->query($query);
                     if (!$result) {
@@ -65,7 +65,7 @@
     </main>
 </div>
 <!------------------------------------------------------------ POP-UP ------------------------------------------------------------>
-<div class="modal fade" id="modal-mdl" role="dialog">
+<div class="modal fade" id="modal-mdl" role="dialog" style="overflow-y: auto;">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -77,6 +77,20 @@
                 <div class="modal-footer">
                     <button type="button" class="mdl-button close" data-dismiss="modal">Close</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="light-box" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <img id="light-box-img" src="" alt="" style="max-width: 780px; max-height: 550px;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="mdl-button close" data-dismiss="modal" onclick="loadModal()">Close</button>
             </div>
         </div>
     </div>

@@ -1,3 +1,10 @@
+<?php
+session_start(); //insisalisasi session
+if (!isset($_SESSION['nama'])) {
+    header('Location: ../login.php');
+}
+$nama = $_SESSION['nama'];
+?>
 <!------------------------------------------------------------ SIDEBAR ----------------------------------------------------------
             Muncul ketika tombol menu di click -->
 <div class="mdl-layout__drawer">
@@ -14,12 +21,12 @@
         <div class="pls-margin-x pls-magin-y mdl-layout--small-screen-only">
             <button id="account-side" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                 <span class="material-icons">account_circle</span>
-                <span class="account-name">Arif Sutowo</span>
+                <span class="account-name"><?php echo $nama; ?></span>
             </button>
             <!-- list menu saat tombol di click -->
             <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="account-side">
                 <!-- menu yang hanya digunakan pada fase development -->
-                <li class="mdl-menu__item"><a href="../">Ganti Akun (dev only)</a></li>
+                <li class="mdl-menu__item"><a href="../logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>

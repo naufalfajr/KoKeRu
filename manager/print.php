@@ -9,7 +9,7 @@ Muncul ketika tombol menu di click -->
 
 <!------------------------------------------------------------ ISI ------------------------------------------------------------>
 <?php
-setlocale(LC_ALL, 'id-ID', 'id_ID');
+setlocale(LC_ALL, 'id-ID', 'id_ID.utf8');
 @$tanggal = $_POST['tanggal'];
 @$status = $_POST['pilihanStatus'];
 $tglSekarang = date('Y-m-d');

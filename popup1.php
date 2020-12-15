@@ -34,7 +34,6 @@ if (isset($_POST['submit'])) {
     } else {
         echo "HANYA BISA UPLOAD 5 FILE";
     }
-    header("refresh:1, url:../index.php");
-    echo 'You\'ll be redirected in about 5 secs. If not, click <a href="index.php">here</a>.';
+    header('Location: ./');
 }
 ?>
