@@ -13,7 +13,7 @@
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 <!-- local -->
 <script src="../assets/js/print.js"></script>
-
+<script src="../assets/js/script.js"></script>
 
 </body>
 
