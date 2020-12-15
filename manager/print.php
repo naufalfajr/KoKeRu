@@ -13,7 +13,7 @@ Muncul ketika tombol menu di click -->
 @$status = $_POST['pilihanStatus'];
 $tglSekarang = date('Y-m-d');
 ?>
-
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 <main class="mdl-layout__content">
     <!-- content here -->
     <div class="page-content">
