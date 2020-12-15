@@ -22,13 +22,76 @@ if (document.querySelector("dialog")) {
  * menggunakan dialog(modal).
  * Lightbox stacking diatas dialog-1
  */
-function fireModal() {
-  dialog = document.querySelector("#dialog-1");
-  dialog.showModal();
-  dialog.querySelector(".close").addEventListener("click", function () {
-    dialog.close();
-    dialog.open = false;
-  });
+
+//Script Ajax Edit Jobdesk
+function getXMLHTTPRequest() {
+  if (window.XMLHttpRequest) {
+    //code for odern browsers
+    return new XMLHttpRequest();
+  } else {
+    //code for IE browser
+    return new ActiveXObject("Microsoft.XMLHTTP");
+  }
+}
+
+// function fireModal(idruang) {
+//   var xmlhttp = getXMLHTTPRequest();
+//   var ruang = encodeURI(idruang);
+//   if (ruang != "") {
+//     //set url and inner
+//     var url = "popup.php?idruang=" + ruang;
+//     //alert(url)
+//     //open request
+//     xmlhttp.open("GET", url, true);
+//     xmlhttp.onreadystatechange = function () {
+//       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//         document.getElementById('modal-body').innerHTML = xmlhttp.responseText;
+//         dialog = document.getElementById('modal-body').innerHTML;
+//         dialog.showModal();
+//         dialog.querySelector(".close").addEventListener("click", function () {
+//           dialog.close();
+//           dialog.open = false;
+//         });
+//       }
+//       return false;
+//     };
+//     xmlhttp.send(null);
+//   } else {
+//     alert("Please fill all the fields");
+//   }
+// }
+
+// $(document).ready(function(){
+
+//   $('.modal').click(function(){
+    
+//     var idruang = $(this).data('id');
+ 
+//     // AJAX request
+//     $.ajax({
+//      url: 'popup.php',
+//      type: 'post',
+//      data: {idruang: idruang},
+//      success: function(response){ 
+//        // Add response in Modal body
+//        $('#modal-body').html(response);
+ 
+//        // Display Modal
+//        $('#dialog-1').modal('show'); 
+//      }
+//    });
+//   });
+//  });
+
+function loadDynamicContentModal(idruang) {
+  $('#demo-modal').load('popup.php?idruang=' + idruang,
+      function() {
+        $('#modal-mdl').modal({
+          show : true
+        });
+      });
+
+      
 }
 
 function fireLightBox() {
@@ -135,6 +198,32 @@ function Tanggal() {
     d.getSeconds();
 }
 
+function edit_jobdesk(idruang) {
+  var xmlhttp = getXMLHTTPRequest();
+  //get input value
+  var ruang = encodeURI(idruang);
+  var idcs = encodeURI(document.getElementById("cs").value);
+  //validate
+  if (ruang != "" && cs != "") {
+    //set url and inner
+    var url = "edit_jobdesk.php?idruang=" + ruang + "&idcs=" + idcs;
+    //alert(url)
+    var inner = "edit_response";
+    //open request
+    xmlhttp.open("GET", url, true);
+    xmlhttp.onreadystatechange = function () {
+      document.getElementById(inner).innerHTML =
+        '<img src="../assets/ajax-loader.gif" />';
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        document.getElementById(inner).innerHTML = xmlhttp.responseText;
+      }
+      return false;
+    };
+    xmlhttp.send(null);
+  } else {
+    alert("Please fill all the fields");
+  }
+}
 // endOf grup fungsi
 
 /*

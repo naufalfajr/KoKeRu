@@ -16,10 +16,13 @@ $nama = $_SESSION['nama'];
 <?php include("templates/sidebar.php") ?>
 
 <!------------------------------------------------------------ ISI ------------------------------------------------------------>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
 <main class="mdl-layout__content">
     <!-- content here -->
     <div class="page-content">
         <!-- Berisi nama gedung dan tanggal -->
+        <!-- Modal -->
         <section id="content-header">
             <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
@@ -34,7 +37,7 @@ $nama = $_SESSION['nama'];
             <div class="mdl-grid">
                 <?php
                 require_once('functions/db_login.php');
-                $query = "SELECT * FROM trx WHERE nama_cs = '" . $nama . "'";
+                $query = "SELECT * FROM trx WHERE nama_cs = '" . $nama . "' AND tanggal = '2020-11-26' ";
                 $select_all = mysqli_query($db, $query);
                 if (!$select_all) {
                     die("QUERY FAILED" . mysqli_error($db));
@@ -43,17 +46,15 @@ $nama = $_SESSION['nama'];
                     echo "<h2 class='text-center'> Maaf mas/mbak anda di phk</h2>";
                 } else {
                     while ($row = mysqli_fetch_assoc($select_all)) {
-                        $namacs       = $row['nama_cs'];
-                        $nama_ruang   = $row['nama_ruang'];
-                        $status       = $row['status'];
+
                 ?>
                         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone">
                             <div class="mdl-card mdl-shadow--2dp">
-                                <div class="mdl-card__title mdl-card--expand  <?php if ($status == 1) echo "pls-done" ?>">
+                                <div class="mdl-card__title mdl-card--expand  <?php if ($row['status'] == 1) echo "pls-done" ?>">
                                     <div>
-                                        <div class="mdl-card__title-text"> <?php echo $nama_ruang ?></div>
+                                        <div class="mdl-card__title-text"> <?php echo $row['nama_ruang']; ?></div>
                                         <div class="mdl-card__subtitle-text">
-                                            <?php if ($status == 1) {
+                                            <?php if ($row['status'] == 1) {
                                                 echo "sudah";
                                             } else {
                                                 echo "belum";
@@ -63,12 +64,12 @@ $nama = $_SESSION['nama'];
                                     </div>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-                                    <span class="account-name"><?php echo $namacs ?></span>
+                                    <span class="account-name"><?php echo $row['nama_cs']; ?></span>
                                 </div>
                                 <!-- Data untuk dikirimkan biar bisa identifikasi ruangan mana yg di klik -->
-                                <input type="hidden" name="ruangan" value="<?php echo $nama_ruang; ?>">
+                                <input type="hidden" name="ruangan" value="<?php echo $row['nama_ruang']; ?>">
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <button id="show-dialog" type="submit" onclick="fireModal()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                    <button type="button" onclick="loadDynamicContentModal(<?php echo $row['idruang']; ?>)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                         Update</button>
                                 </div>
                             </div>
@@ -78,12 +79,30 @@ $nama = $_SESSION['nama'];
                 }
                 ?>
             </div>
+
+            
         </section>
-
+        
         <!------------------------------------------------------------ POP-UP ------------------------------------------------------------>
-        <?php include("templates/popup.php") ?>
-
+        
     </div>
 </main>
+</div>
 
+<div class="modal fade" id="modal-mdl" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="mdl-dialog">
+                <h4 class="mdl-dialog__title">Bukti Kebersihan dan Kerapihan</h4>
+                <div class="mdl-dialog__content">
+                    <div id="demo-modal"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="mdl-button close" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php include("templates/footer.php") ?>
