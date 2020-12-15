@@ -58,6 +58,8 @@ if (isset($_POST['submit'])) {
 <?php include("templates/header.php") ?>
 
 <!------------------------------------------------------------ NAVBAR ------------------------------------------------------------>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
 <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
         <!-- Title -->
@@ -105,5 +107,6 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </main>
+</div>
 
 <?php include("templates/footer.php") ?>

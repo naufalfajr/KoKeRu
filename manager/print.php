@@ -9,6 +9,7 @@ Muncul ketika tombol menu di click -->
 
 <!------------------------------------------------------------ ISI ------------------------------------------------------------>
 <?php
+setlocale(LC_ALL, 'id-ID', 'id_ID.utf8');
 @$tanggal = $_POST['tanggal'];
 @$status = $_POST['pilihanStatus'];
 $tglSekarang = date('Y-m-d');
@@ -59,17 +60,19 @@ $tglSekarang = date('Y-m-d');
                 <div class="mdl-cell mdl-cell--10-col mdl-shadow--2dp text-center">
                     <div class="card-body">
                         <div id="laporanHarian">
-                            <h2>Laporan Harian Pembersihan Ruangan</h2>
-                            <h3>Tanggal <?php if (isset($tanggal)) {
-                                            echo date('d-m-Y', strtotime($tanggal));
+                            <h2>Laporan Harian Kebersihan dan Kerapihan Ruangan</h2>
+                            <h3>Hari <?php if (isset($tanggal)) {
+                                            echo strftime('%A %d %B %Y', strtotime($tanggal));
                                         } else {
-                                            echo date('d-m-Y', strtotime($tglSekarang));
-                                        }?></h3>
-                            <br>
-                            <table class="table table-striped table-bordered dataTable" style="border: 1;" name="tableData" id="tableData">
+                                            echo strftime('%A %d %B %Y', strtotime($tglSekarang));
+                                        } ?></h3>
+                            <em>
+                                <<<label>Tanggal cetak</label>&nbsp;<label class="mdl-cell--hide-phone" id="date"></label> WIB>>
+                            </em>
+                            <table class="table table-striped table-bordered dataTable" style="border: 1; margin-top: 2em" name="tableData" id="tableData">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Ruang</th>
+                                    <th>Ruang</th>
                                     <th>Nama CS</th>
                                     <th>Status</th>
                                 </tr>
@@ -110,6 +113,20 @@ $tglSekarang = date('Y-m-d');
                                 ?>
                                 <!-- PHP END CETAK TABEL -->
                             </table>
+                            <br>
+                            <div class="table-approve">
+                                <table style="margin-left: auto; margin-right: 10em">
+                                    <tr>
+                                        <td>Approve</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-top: 5em;"><?= $nama; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Manajer</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -117,5 +134,4 @@ $tglSekarang = date('Y-m-d');
         </section>
     </div>
 </main>
-</div>
 <?php include("templates/footer_print.php") ?>

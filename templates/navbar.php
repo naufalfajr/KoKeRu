@@ -21,7 +21,6 @@
                 <!-- list menu saat tombol di click -->
                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="account">
                     <!-- menu yang hanya digunakan pada fase development -->
-                    <li class="mdl-menu__item"><a href="manager/">Ganti Akun (dev only)</a></li>
                     <li class="mdl-menu__item"><a href="logout.php">Logout</a></li>
                 </ul>
             </div>

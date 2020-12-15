@@ -4,6 +4,14 @@ if (!isset($_SESSION['nama'])) {
     header('Location: ../login.php');
 }
 $nama = $_SESSION['nama'];
+require_once('../functions/db_login.php');
+$query_nama = " SELECT * FROM manager ";
+$result = $db->query($query_nama);
+$row_nama = $result->fetch_object();
+if ($nama != $row_nama->nama_manager) {
+    header('Location: ../');
+}
+
 ?>
 <!------------------------------------------------------------ NAVBAR ------------------------------------------------------------>
 <header class="mdl-layout__header d-print-none">
@@ -28,7 +36,6 @@ $nama = $_SESSION['nama'];
                 <!-- list menu saat tombol di click -->
                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="account">
                     <!-- menu yang hanya digunakan pada fase development -->
-                    <li class="mdl-menu__item"><a href="../">Ganti Akun (dev only)</a></li>
                     <li class="mdl-menu__item"><a href="../logout.php">Logout</a></li>
                 </ul>
             </div>
