@@ -1,10 +1,10 @@
 <?php
 session_start(); //insisalisasi session
 if (!isset($_SESSION['nama'])) {
-    header('Location: login.php');
+    header('Location: ../login.php');
 }
 
-require_once('functions/db_login.php');
+require_once('db_login.php');
 $nama = $_SESSION['nama'];
 $id_ruang = $_GET['idruang'];
 
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
         while ($i < $countfiles) {
             $bukti = $_FILES['bukti']['name'][$i];
             $bukti_temp = $_FILES['bukti']['tmp_name'][$i];
-            move_uploaded_file($bukti_temp, "assets/img/$bukti");
+            move_uploaded_file($bukti_temp, "../assets/img/$bukti");
 
             // Karena index file yg di upload mulai dari 0 tapi di db kita mulai dari 1
             $i++;
@@ -34,6 +34,6 @@ if (isset($_POST['submit'])) {
     } else {
         echo "HANYA BISA UPLOAD 5 FILE";
     }
-    header('Location: ./');
+    header('Location: ../');
 }
 ?>

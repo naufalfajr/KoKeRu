@@ -4,7 +4,7 @@ if (!isset($_SESSION['nama'])) {
     header('Location: login.php');
 }
 
-require_once('functions/db_login.php');
+require_once('db_login.php');
 $id_ruang = $_GET['idruang'];
 
 ?>
@@ -13,7 +13,7 @@ $id_ruang = $_GET['idruang'];
 <!-- dialog pertama yang muncul ketika tombol detail di click -->
 <!-- form submit gambar
             Bisa multiple files -->
-    <form action="popup1.php?idruang=<?php echo $id_ruang; ?>" method="POST" enctype="multipart/form-data">
+    <form action="functions/upload_file.php?idruang=<?php echo $id_ruang; ?>" method="POST" enctype="multipart/form-data">
         <div class="mdl-textfield mdl-textfield--floating-label is-focused">
             <input type="file" id="bukti" name="bukti[]" multiple class="mdl-textfield__input">
             <label for="bukti" class="mdl-textfield__label">Select files:</label>

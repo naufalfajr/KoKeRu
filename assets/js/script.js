@@ -24,7 +24,7 @@ if (document.querySelector("dialog")) {
  */
             
             function loadDynamicContentModal(idruang) {
-              $('#demo-modal').load('popup.php?idruang=' + idruang,
+              $('#demo-modal').load('functions/popup.php?idruang=' + idruang,
               function() {
                 $('#modal-mdl').modal({
                   show : true
@@ -49,25 +49,25 @@ if (document.querySelector("dialog")) {
               $('#modal-mdl').modal('show');
             }
             
-            function fireLightBox() {
-              lightBox = document.querySelector("#lightBox");
-              lightBox.showModal();
-              lightBox
-              .querySelector(".close-lightBox")
-              .addEventListener("click", function () {
-                lightBox.close();
-                lightBox.open = false;
-              });
-            }
+            // function fireLightBox() {
+            //   lightBox = document.querySelector("#lightBox");
+            //   lightBox.showModal();
+            //   lightBox
+            //   .querySelector(".close-lightBox")
+            //   .addEventListener("click", function () {
+            //     lightBox.close();
+            //     lightBox.open = false;
+            //   });
+            // }
             
-            // Script Hanya untuk demo
-            function fireModalKosongDemo() {
-              dialog = document.querySelector("#dialog_kosong");
-              dialog.showModal();
-              dialog.querySelector(".close").addEventListener("click", function () {
-                dialog.close();
-              });
-            }
+            // // Script Hanya untuk demo
+            // function fireModalKosongDemo() {
+            //   dialog = document.querySelector("#dialog_kosong");
+            //   dialog.showModal();
+            //   dialog.querySelector(".close").addEventListener("click", function () {
+            //     dialog.close();
+            //   });
+            // }
             
             //Script untuk menampilkan tanggal
             setInterval(Tanggal, 1000);
@@ -172,7 +172,7 @@ if (document.querySelector("dialog")) {
                                                     //validate
                                                     if(ruang != "" && cs != ""){
                                                       //set url and inner
-                                                      var url = "edit_jobdesk.php?idruang=" + ruang + "&idcs=" + idcs;
+                                                      var url = "functions/edit_jobdesk.php?idruang=" + ruang + "&idcs=" + idcs;
                                                       //alert(url)
                                                       var inner = 'edit_response';
                                                       //open request

@@ -4,4 +4,4 @@ if (isset($_SESSION['nama'])) {
     unset($_SESSION['nama']);
     session_destroy();
 }
-header('Location: login.php');
+header('Location: ../login.php');

@@ -12,16 +12,6 @@
     <main class="mdl-layout__content">
         <!-- content here -->
         <div class="page-content">
-            <!-- Berisi nama gedung dan tanggal -->
-            <section id="content-header">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-                        <h4 class="mdl-cell--hide-phone">Monitoring Kebersihan dan Kerapihan Ruang</h4>
-                        <h5 class="">Gedung Bersama Maju</h5>
-                        <h6 class="mdl-cell--hide-phone" id="date"></h6>
-                    </div>
-                </div>
-            </section>
             <!-- bersisi card ruangan -->
             <section id="content-body">
                 <div class="mdl-grid">
@@ -29,7 +19,7 @@
                     //include our login information
                     require_once('../functions/db_login.php');
                     //execute query
-                    $tanggal = "2020-12-04";
+                    $tanggal = "2020-11-26";
                     $query = " SELECT * FROM trx WHERE tanggal='".$tanggal."'";
                     $result = $db->query($query);
                     if (!$result) {

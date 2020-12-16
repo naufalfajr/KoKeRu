@@ -22,6 +22,8 @@ if ($nama != $row_nama->nama_manager) {
                 cleaning_services
             </span>
             KoKeRu</span>
+        <div class="mdl-layout-spacer"></div>
+        <span class="mdl-layout-title">Gedung Bersama Maju</span>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation -->
@@ -36,7 +38,7 @@ if ($nama != $row_nama->nama_manager) {
                 <!-- list menu saat tombol di click -->
                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="account">
                     <!-- menu yang hanya digunakan pada fase development -->
-                    <li class="mdl-menu__item"><a href="../logout.php">Logout</a></li>
+                    <li class="mdl-menu__item"><a class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" href="../functions/logout.php">Logout</a></li>
                 </ul>
             </div>
         </nav>
