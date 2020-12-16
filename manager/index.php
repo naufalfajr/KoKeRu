@@ -76,6 +76,7 @@
             <div class="modal-body">
                 <div class="d-flex justify-content-center">
                     <img id="light-box-img" src="" alt="" style="max-width: 780px; max-height: 550px;">
+                    <video id="light-box-vid" src="" controls width="780" height="550"></video>
                 </div>
             </div>
             <div class="modal-footer">

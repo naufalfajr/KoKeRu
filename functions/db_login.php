@@ -1,8 +1,8 @@
 <?php
 $db_host='localhost';
 $db_database='kokeru';
-$db_username='archerx';
-$db_password='MySQLpasw0&';
+$db_username='root';
+$db_password='';
 
 //connect db
 $db = new mysqli($db_host, $db_username, $db_password, $db_database);

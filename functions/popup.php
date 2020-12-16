@@ -38,7 +38,19 @@ $id_ruang = $_GET['idruang'];
         for ($i = 1; $i <= 5; $i++) {
         ?>
             <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-                <img alt=" " class="pls-img-200" onclick="loadLightBox('<?php echo $row['bukti' . $i]; ?>')" src="assets/img/<?php echo $row['bukti' . $i]; ?>">
+                <?php
+                    $file = "assets/img/".$row['bukti' . $i];
+                    $path_parts = pathinfo($file);
+                    if(!($row['bukti' . $i] == '')){
+                        if($path_parts['extension'] == 'mp4'){
+                            ?><video width="200" height="200" onclick="loadLightBox('<?php echo $row['bukti' . $i]; ?>')" src="assets/img/<?php echo $row['bukti' . $i]; ?>"></video>
+                            <?php  
+                        }else{
+                            ?><img alt=" " class="pls-img-200" onclick="loadLightBox('<?php echo $row['bukti' . $i]; ?>')" src="assets/img/<?php echo $row['bukti' . $i]; ?>">
+                            <?php
+                        }
+                    }
+                ?>
             </div>
         <?php
         }

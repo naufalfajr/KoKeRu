@@ -53,6 +53,6 @@ $RECYCLE.BIN/
 
 # PROJECT KOKERU
 assets/img/*
-db_login.php
+functions/db_login.php
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode,windows,linux
