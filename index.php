@@ -27,22 +27,11 @@ if ($nama == $row_nama->nama_manager) {
     <main class="mdl-layout__content">
         <!-- content here -->
         <div class="page-content">
-            <!-- Berisi nama gedung dan tanggal -->
-            <!-- Modal -->
-            <section id="content-header">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-                        <p class="mdl-cell--hide-phone">Monitoring Kebersihan dan Kerapihan Ruang</p>
-                        <p class="">Gedung Bersama Maju</p>
-                        <p class="mdl-cell--hide-phone" id="date"></p>
-                    </div>
-                </div>
-            </section>
             <!-- bersisi card ruangan -->
             <section id="content-body">
                 <div class="mdl-grid">
                     <?php
-                    $query = "SELECT * FROM trx WHERE nama_cs = '" . $nama . "' AND tanggal = '2020-11-26' ";
+                    $query = "SELECT * FROM trx WHERE nama_cs = '" . $nama . "' AND tanggal = '".date("Y-m-d")."' ";
                     $select_all = mysqli_query($db, $query);
                     if (!$select_all) {
                         die("QUERY FAILED" . mysqli_error($db));

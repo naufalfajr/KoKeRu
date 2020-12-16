@@ -134,4 +134,4 @@ $tglSekarang = date('Y-m-d');
         </section>
     </div>
 </main>
-<?php include("templates/footer_print.php") ?>
+<?php include("templates/footer.php") ?>
