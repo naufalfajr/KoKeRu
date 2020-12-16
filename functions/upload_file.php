@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $i = 0;
     if ($countfiles <= 5) {
         // Jalan terus sampai banyaknya file yg diupload atau 5
-        $query_status = "UPDATE trx SET status = 1 WHERE nama_cs = '" . $nama . "' AND idruang= '" . $id_ruang . "' AND tanggal = '2020-11-26' ";
+        $query_status = "UPDATE trx SET status = 1 WHERE nama_cs = '" . $nama . "' AND idruang= '" . $id_ruang . "' AND tanggal = '".date("Y-m-d")."' ";
         $create_status_query = mysqli_query($db, $query_status);
         while ($i < $countfiles) {
             $bukti = $_FILES['bukti']['name'][$i];
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
             $i++;
 
             // Masuk ke db kolom bukti ke i
-            $query = "UPDATE trx SET bukti" . $i . " = '" . $bukti . "' WHERE idruang = '" . $id_ruang . "' AND tanggal = '2020-11-26'";
+            $query = "UPDATE trx SET bukti" . $i . " = '" . $bukti . "' WHERE idruang = '" . $id_ruang . "' AND tanggal = '".date("Y-m-d")."'";
             $create_bukti_query = mysqli_query($db, $query);
 
             if (!$create_bukti_query) {

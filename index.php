@@ -31,7 +31,7 @@ if ($nama == $row_nama->nama_manager) {
             <section id="content-body">
                 <div class="mdl-grid">
                     <?php
-                    $query = "SELECT * FROM trx WHERE nama_cs = '" . $nama . "' AND tanggal = '2020-11-26' ";
+                    $query = "SELECT * FROM trx WHERE nama_cs = '" . $nama . "' AND tanggal = '".date("Y-m-d")."' ";
                     $select_all = mysqli_query($db, $query);
                     if (!$select_all) {
                         die("QUERY FAILED" . mysqli_error($db));

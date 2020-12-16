@@ -8,9 +8,16 @@
     $namacs = $resultcs->fetch_object();
     #assign query
     $query = " UPDATE cs_ruang SET idcs=".$idcs.", nama_cs='".$namacs->nama_cs."' WHERE idruang=".$idruang." ";
-    $query_trx = " UPDATE trx SET idcs=".$idcs.", nama_cs='".$namacs->nama_cs."' WHERE idruang=".$idruang." ";
+    $hari = date("d");
+    $hari = $hari+1;
+    //mengganti jobdesk mulai besok ke cs baru
+    while ($hari != 32) {
+        $query_trx = " UPDATE trx SET idcs=".$idcs.", nama_cs='".$namacs->nama_cs."' WHERE idruang=".$idruang." AND tanggal='".date("Y")."-".date("m")."-".$hari."' ";
+        $result_trx = $db->query($query_trx);
+        $hari++;
+    }
+    
     $result = $db->query($query);
-    $result_trx = $db->query($query_trx);
     if (!$result || !$result_trx) {
         echo '<div class="alert alert-danger alert-dismissible fade show">
                 <strong>Error!</strong> Could not query the database<br>

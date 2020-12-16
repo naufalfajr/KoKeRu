@@ -13,7 +13,7 @@ $id_ruang = $_GET['idruang'];
     <div class="mdl-grid">
         <?php
         //Query untuk mengambil gambar. kondisi where belum sesuai ruangan yang di clik
-        $query = "SELECT * FROM trx WHERE idruang = '" . $id_ruang . "' AND tanggal = '2020-11-26' ";
+        $query = "SELECT * FROM trx WHERE idruang = '" . $id_ruang . "' AND tanggal = '".date("Y-m-d")."' ";
         $select_bukti = mysqli_query($db, $query);
         if (!$select_bukti) {
             die("QUERY FAILED" . mysqli_error($db));

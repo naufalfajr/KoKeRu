@@ -49,26 +49,6 @@ if (document.querySelector("dialog")) {
               $('#modal-mdl').modal('show');
             }
             
-            // function fireLightBox() {
-            //   lightBox = document.querySelector("#lightBox");
-            //   lightBox.showModal();
-            //   lightBox
-            //   .querySelector(".close-lightBox")
-            //   .addEventListener("click", function () {
-            //     lightBox.close();
-            //     lightBox.open = false;
-            //   });
-            // }
-            
-            // // Script Hanya untuk demo
-            // function fireModalKosongDemo() {
-            //   dialog = document.querySelector("#dialog_kosong");
-            //   dialog.showModal();
-            //   dialog.querySelector(".close").addEventListener("click", function () {
-            //     dialog.close();
-            //   });
-            // }
-            
             //Script untuk menampilkan tanggal
             setInterval(Tanggal, 1000);
             

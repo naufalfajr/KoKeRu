@@ -28,7 +28,7 @@ $id_ruang = $_GET['idruang'];
     <div class="mdl-grid">
         <?php
         //Query untuk mengambil gambar. kondisi where belum sesuai ruangan yang di clik
-        $query = "SELECT * FROM trx WHERE idruang = '" . $id_ruang . "' AND tanggal = '2020-11-26' ";
+        $query = "SELECT * FROM trx WHERE idruang = '" . $id_ruang . "' AND tanggal = '".date("Y-m-d")."' ";
         $select_bukti = mysqli_query($db, $query);
         if (!$select_bukti) {
             die("QUERY FAILED" . mysqli_error($db));
@@ -38,7 +38,7 @@ $id_ruang = $_GET['idruang'];
         for ($i = 1; $i <= 5; $i++) {
         ?>
             <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-                <img alt="img" class="pls-img-200" onclick="loadLightBox('<?php echo $row['bukti' . $i]; ?>')" src="assets/img/<?php echo $row['bukti' . $i]; ?>">
+                <img alt=" " class="pls-img-200" onclick="loadLightBox('<?php echo $row['bukti' . $i]; ?>')" src="assets/img/<?php echo $row['bukti' . $i]; ?>">
             </div>
         <?php
         }

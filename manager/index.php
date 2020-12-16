@@ -19,8 +19,7 @@
                     //include our login information
                     require_once('../functions/db_login.php');
                     //execute query
-                    $tanggal = "2020-11-26";
-                    $query = " SELECT * FROM trx WHERE tanggal='".$tanggal."'";
+                    $query = " SELECT * FROM trx WHERE tanggal='".date("Y-m-d")."' ";
                     $result = $db->query($query);
                     if (!$result) {
                         die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
