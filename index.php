@@ -37,7 +37,7 @@ if ($nama == $row_nama->nama_manager) {
                         die("QUERY FAILED" . mysqli_error($db));
                     }
                     if (mysqli_num_rows($select_all) == 0) {
-                        echo "<h2 class='text-center'> Maaf mas/mbak anda di phk</h2>";
+                        echo '<h2 style="text-align: center;">Tidak ada ruang yang perlu anda bersihkan</h2>';
                     } else {
                         while ($row = mysqli_fetch_assoc($select_all)) {
                     ?>
