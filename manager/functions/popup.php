@@ -23,7 +23,7 @@ $id_ruang = $_GET['idruang'];
         for ($i = 1; $i <= 5; $i++) {
         ?>
             <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-                <img alt="img" class="pls-img-200" onclick="loadLightBoxManager('<?php echo $row['bukti' . $i]; ?>')" src="../assets/img/<?php echo $row['bukti' . $i]; ?>">
+                <img alt=" " class="pls-img-200" onclick="loadLightBoxManager('<?php echo $row['bukti' . $i]; ?>')" src="../assets/img/<?php echo $row['bukti' . $i]; ?>">
             </div>
         <?php
         }
